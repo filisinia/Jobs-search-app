@@ -6,7 +6,7 @@ type JobCardProps = {
 };
 
 const JobCard: FC<JobCardProps> = ({ jobDetails }): JSX.Element => (
-  <section>
+  <section className="flex flex-col">
     <h2>{jobDetails.job_title}</h2>
     <section>
       <div>{jobDetails.job_description}</div>
