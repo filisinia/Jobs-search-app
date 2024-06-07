@@ -130,9 +130,9 @@ const jobsExample: JobDetails[] = [
 ];
 
 export const Jobs = (): JSX.Element => {
-  const [jobs, setJobs] = useState<JobDetails[]>(jobsExample);
+  // const [jobs, setJobs] = useState<JobDetails[]>(jobsExample);
 
-  const jobCards = jobs.map((job) => (
+  const jobCards = jobsExample.map((job) => (
     <JobCard key={job.job_id} jobDetails={job} />
   ));
 
