@@ -1,9 +1,9 @@
-type Experience = {
+interface Experience {
   no_experience_required: boolean;
   required_experience_in_months: number;
   experience_mentioned: boolean;
   experience_preferred: boolean;
-};
+}
 
 export interface JobDetails {
   employer_name: string;

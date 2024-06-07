@@ -7,10 +7,14 @@ type JobCardProps = {
 
 const JobCard: FC<JobCardProps> = ({ jobDetails }): JSX.Element => (
   <section>
-    <h2>Job Title</h2>
+    <h2>{jobDetails.job_title}</h2>
     <section>
-      <div>Job Description</div>
-      <div>Job Additional Info</div>
+      <div>{jobDetails.job_description}</div>
+      <div>
+        <span>{jobDetails.employer_name}</span>
+        <span>{jobDetails.employer_company_type}</span>
+        <span>{jobDetails.employer_website}</span>
+      </div>
     </section>
   </section>
 );
