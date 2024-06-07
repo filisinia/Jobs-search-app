@@ -1,5 +1,3 @@
 export default function App() {
-  return (
-    <main>Page</main>
-  );
+  return <main>Page</main>;
 }
