@@ -30,6 +30,7 @@ export interface JobDetails {
   job_job_title: string;
   job_min_salary: number;
   job_max_salary: number;
+  job_salary_currency: string;
 }
 
 type Response = {

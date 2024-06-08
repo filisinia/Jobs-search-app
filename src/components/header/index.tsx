@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Header = (): JSX.Element => {
   return (
-    <header className="absolute inset-x-0 top-0 z-50 w-full h-12 backdrop-brightness-125 text-xl">
+    <header className="fixed inset-x-0 top-0 z-50 w-full h-14 text-xl backdrop-brightness-150 backdrop-blur-3xl">
       <nav className="flex place-content-between items-center w-10/12 m-auto h-full transition-all">
         <div className="flex items-center">
           <Link href="/" className="hover:text-white mr-5 text-2xl">

@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={
           (inter.className,
-          'bg-gradient-to-tr from-rose-950 to-blue-950 min-h-svh text-lg text-slate-300 pt-12')
+          'bg-gradient-to-tr from-[#2e020e] to-blue-950 min-h-svh text-lg text-slate-300 pt-14')
         }
       >
         <Header />
