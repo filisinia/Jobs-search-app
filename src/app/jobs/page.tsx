@@ -1,6 +1,7 @@
 'use client';
 
 import JobCards from '@/components/jobCards';
+import Loader from '@/components/loader';
 import Search from '@/components/search';
 import { useJobs } from '@/hooks/jobs';
 import { getUserDataFromLS } from '@/utils/userData';
@@ -12,7 +13,7 @@ const JobsPage = (): JSX.Element => {
     userData ? userData.desiredJobTitle : '',
   );
 
-  const { jobs } = useJobs(searchQuery);
+  const { jobs, loading } = useJobs(searchQuery);
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
@@ -21,7 +22,7 @@ const JobsPage = (): JSX.Element => {
   return (
     <section>
       <Search onSearch={handleSearch} />
-      <JobCards jobs={jobs} />
+      {loading ? <Loader /> : <JobCards jobs={jobs} />}
     </section>
   );
 };

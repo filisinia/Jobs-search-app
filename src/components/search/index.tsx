@@ -16,6 +16,10 @@ const Search: FC<SearchProps> = ({ onSearch }): JSX.Element => {
     onSearch(query);
   };
 
+  const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>): void => {
+    if (e.key === 'Enter') handleSearch();
+  };
+
   return (
     <div className="relative flex gap-7 mb-5">
       <svg
@@ -38,6 +42,7 @@ const Search: FC<SearchProps> = ({ onSearch }): JSX.Element => {
         type="text"
         value={query}
         onChange={(e) => setQuery(e.target.value)}
+        onKeyUp={handleKeyUp}
         placeholder="Search job"
         className="w-full bg-slate-100/20 p-1 rounded-sm pl-10 text-white focus:outline-none shadow-lg focus:shadow-indigo-300/10"
       />
