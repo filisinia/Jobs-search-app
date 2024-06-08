@@ -31,7 +31,7 @@ export default function RootLayout({
         }
       >
         <Header />
-        <main className="w-10/12 mx-auto backdrop-opacity-50 pt-5">
+        <main className="w-10/12 mx-auto backdrop-opacity-50 mt-5">
           {children}
         </main>
       </body>

@@ -3,8 +3,13 @@
 import { Formik, Form } from 'formik';
 import signupSchema from '@/utils/validation';
 import InputField from '@/components/form/inputField';
+import { UserData } from '@/types';
 
 const FormElem = (): JSX.Element => {
+  const handleSubmit = (userData: UserData): void => {
+    localStorage.setItem('userData', JSON.stringify(userData));
+  };
+
   return (
     <section className="flex flex-col items-center justify-center gap-4 mb-10 p-10 max-w-2xl rounded-lg bg-slate-50/5 shadow-lg shadow-indigo-300/10 m-auto mt-10">
       <h1 className="text-3xl font-bold text-white">Sign up</h1>
@@ -15,7 +20,7 @@ const FormElem = (): JSX.Element => {
           aboutMe: '',
         }}
         validationSchema={signupSchema}
-        onSubmit={(values) => console.log(values)}
+        onSubmit={(userData) => handleSubmit(userData)}
       >
         <Form className="text-md flex flex-col items-stretch gap-3 lg:w-2/4">
           <InputField label="Name" name="name" />

@@ -54,3 +54,9 @@ export type JobDetailsResponse = Response & {
   };
   data: JobDetails[];
 };
+
+export type UserData = {
+  name: string;
+  desiredJobTitle: string;
+  aboutMe: string;
+};
