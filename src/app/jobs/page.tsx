@@ -1,16 +1,16 @@
 'use client';
 
-import JobCard from '@/components/jobCard';
+import JobCards from '@/components/jobCards';
 import { useJobs } from '@/hooks/jobs';
 
 const JobsPage = (): JSX.Element => {
   const { jobs } = useJobs();
 
-  const jobCards = jobs?.map((job) => (
-    <JobCard key={job.job_id} jobDetails={job} />
-  ));
-
-  return <section>{jobCards}</section>;
+  return (
+    <section>
+      <JobCards jobs={jobs} />
+    </section>
+  );
 };
 
 export default JobsPage;
