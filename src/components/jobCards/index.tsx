@@ -7,7 +7,7 @@ type JobCardsProps = {
 };
 
 const JobCards: FC<JobCardsProps> = ({ jobs }): JSX.Element => {
-  const jobCards = jobs?.map((job) => (
+  const jobCards = jobs.map((job) => (
     <JobCard key={job.job_id} jobDetails={job} />
   ));
 

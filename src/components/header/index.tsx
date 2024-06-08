@@ -1,6 +1,6 @@
 'use client';
 
-import { getUserDataFromLS } from '@/utils/userData';
+import { getUserDataFromLS } from '@/utils/localStorage';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -27,20 +27,20 @@ const Header = (): JSX.Element => {
           </Link>
           <Link
             href="/jobs"
-            className={`"hover:text-white" ${pathname === '/jobs' && 'underline underline-offset-4'}`}
+            className={`hover:text-white ${pathname === '/jobs' && 'underline underline-offset-4'}`}
           >
             Jobs
           </Link>
         </div>
         <div className="flex items-center gap-4">
-          <Link href="/saved">
+          <Link href="/liked">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="white"
-              className={`size-7 hover:fill-white" ${pathname === '/saved' && 'underline underline-offset-4'}`}
+              className={`size-7 hover:fill-white ${pathname === '/liked' && 'underline underline-offset-4'}`}
             >
               <path
                 strokeLinecap="round"
@@ -51,7 +51,7 @@ const Header = (): JSX.Element => {
           </Link>
           <Link
             href={userData ? '/user-profile' : '/create-profile'}
-            className={`hover:text-white" ${(pathname === '/user-profile' || pathname === '/create-profile') && 'underline underline-offset-4'}`}
+            className={`hover:text-white ${(pathname === '/user-profile' || pathname === '/create-profile') && 'underline underline-offset-4'}`}
           >
             {userData ? 'Profile' : 'Sign up'}
           </Link>

@@ -2,9 +2,10 @@
 
 import JobCards from '@/components/jobCards';
 import Loader from '@/components/loader';
+import Message from '@/components/message';
 import Search from '@/components/search';
 import { useJobs } from '@/hooks/jobs';
-import { getUserDataFromLS } from '@/utils/userData';
+import { getUserDataFromLS } from '@/utils/localStorage';
 import { useState } from 'react';
 
 const JobsPage = (): JSX.Element => {
@@ -22,7 +23,12 @@ const JobsPage = (): JSX.Element => {
   return (
     <section>
       <Search onSearch={handleSearch} />
-      {loading ? <Loader /> : <JobCards jobs={jobs} />}
+      {loading && <Loader />}
+      {jobs.length !== 0 ? (
+        <JobCards jobs={jobs} />
+      ) : (
+        <Message text="No jobs were found" />
+      )}
     </section>
   );
 };
