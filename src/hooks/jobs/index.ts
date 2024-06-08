@@ -7,9 +7,8 @@ type useJobsResponse = {
   loading: boolean;
 };
 
-export const useJobs = (): useJobsResponse => {
-  const pathKey = `/jobs`;
-  const { data, error } = useSWR(pathKey, fetchJobs);
+export const useJobs = (query?: string, page?: number): useJobsResponse => {
+  const { data, error } = useSWR([query], () => fetchJobs(query));
 
   return { jobs: data || [], loading: !error && !data };
 };

@@ -1,5 +1,6 @@
 'use client';
 
+import { getUserDataFromLS } from '@/utils/userData';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -7,11 +8,11 @@ import { useRouter } from 'next/navigation';
 const Header = (): JSX.Element => {
   const pathname = usePathname();
   const router = useRouter();
-  const userData = localStorage.getItem('userData');
+  const userData = getUserDataFromLS();
 
   const handleLogout = (): void => {
     localStorage.removeItem('userData');
-    router.push('/');
+    router.replace('/');
   };
 
   return (

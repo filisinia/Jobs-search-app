@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Search from '@/components/search';
 
 export default function App() {
   return (

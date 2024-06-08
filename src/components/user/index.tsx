@@ -1,9 +1,17 @@
 'use client';
 
-import { UserData } from '@/types';
+import { useRouter } from 'next/navigation';
+import { getUserDataFromLS } from '@/utils/userData';
 
-const UserInfo = (): JSX.Element => {
-  const userData: UserData = JSON.parse(localStorage.getItem('userData') || '');
+const UserInfo = (): JSX.Element | null => {
+  const router = useRouter();
+  const userData = getUserDataFromLS();
+
+  if (!userData) {
+    router.replace('/');
+    return null;
+  }
+
   const titles = ['Name', 'Desired job', 'About me'];
 
   const userElems = titles.map((title, index) => (

@@ -31,7 +31,7 @@ const FormElem = (): JSX.Element => {
           <InputField label="Desired job" name="desiredJobTitle" />
           <InputField label="About me" name="aboutMe" />
           <button
-            className="shadow bg-indigo-500/30 hover:bg-indigo-400/30 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded mt-3"
+            className="shadow bg-indigo-500/30 hover:bg-indigo-400/30 focus:outline-none text-white font-bold py-2 px-6 rounded mt-3"
             type="submit"
           >
             Submit
