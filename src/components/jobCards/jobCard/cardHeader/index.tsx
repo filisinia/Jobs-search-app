@@ -1,8 +1,9 @@
-import { JobDetails } from '@/types';
 import { FC } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Heart from '@/components/heart';
+import { JobDetails } from '@/types';
+import { addLikedJobIntoLS } from '@/utils/localStorage';
 
 type CardHeaderProps = {
   jobDetails: JobDetails;
@@ -15,6 +16,11 @@ const CardHeader: FC<CardHeaderProps> = ({
   imageError,
   handleImageError,
 }): JSX.Element => {
+  const handlerHeartBtn = (): void => {
+    console.log(jobDetails.job_id);
+    addLikedJobIntoLS(jobDetails.job_id);
+  };
+
   return (
     <div className="flex justify-between">
       <div className="flex items-center gap-3">
@@ -43,7 +49,9 @@ const CardHeader: FC<CardHeaderProps> = ({
           <span className="text-md">{jobDetails.employer_name}</span>
         )}
       </div>
-      <Heart />
+      <button onClick={handlerHeartBtn}>
+        <Heart />
+      </button>
     </div>
   );
 };

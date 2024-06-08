@@ -1,6 +1,6 @@
 'use client';
 
-import { getUserDataFromLS } from '@/utils/localStorage';
+import { deleteUserDataFromLS, getUserDataFromLS } from '@/utils/localStorage';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
@@ -12,7 +12,7 @@ const Header = (): JSX.Element => {
   const userData = getUserDataFromLS();
 
   const handleLogout = (): void => {
-    localStorage.removeItem('userData');
+    deleteUserDataFromLS();
     pathname === '/' ? router.replace('/create-profile') : router.replace('/');
   };
 
