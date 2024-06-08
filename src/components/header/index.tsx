@@ -29,7 +29,7 @@ const Header = (): JSX.Element => {
               />
             </svg>
           </Link>
-          <Link href="/user-profile" className="hover:text-white">
+          <Link href="/create-profile" className="hover:text-white">
             Sign up
           </Link>
         </div>
