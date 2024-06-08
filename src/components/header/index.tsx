@@ -35,7 +35,7 @@ const Header = (): JSX.Element => {
         </div>
         <div className="flex items-center gap-4">
           <Link href="/liked">
-            <Heart />
+            {pathname === '/liked' ? <Heart isFilled={true} /> : <Heart />}
           </Link>
           <Link
             suppressHydrationWarning

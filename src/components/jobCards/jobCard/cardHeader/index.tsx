@@ -1,9 +1,9 @@
-import { FC } from 'react';
+import { FC, useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import Heart from '@/components/heart';
 import { JobDetails } from '@/types';
-import { addLikedJobIntoLS } from '@/utils/localStorage';
+import { addLikedJobIntoLS, checkIsJobLiked } from '@/utils/localStorage';
 
 type CardHeaderProps = {
   jobDetails: JobDetails;
@@ -16,10 +16,17 @@ const CardHeader: FC<CardHeaderProps> = ({
   imageError,
   handleImageError,
 }): JSX.Element => {
+  const [isLiked, setIsLiked] = useState(false);
+
   const handlerHeartBtn = (): void => {
-    console.log(jobDetails.job_id);
     addLikedJobIntoLS(jobDetails.job_id);
+    setIsLiked(true);
   };
+
+  useEffect(() => {
+    const isJobLiked = checkIsJobLiked(jobDetails.job_id);
+    setIsLiked(isJobLiked);
+  }, [jobDetails.job_id]);
 
   return (
     <div className="flex justify-between">
@@ -50,7 +57,7 @@ const CardHeader: FC<CardHeaderProps> = ({
         )}
       </div>
       <button onClick={handlerHeartBtn}>
-        <Heart />
+        {isLiked ? <Heart isFilled={true} /> : <Heart />}
       </button>
     </div>
   );

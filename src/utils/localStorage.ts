@@ -32,6 +32,17 @@ export const getLikedJobsFromLS = (): string[] | null => {
   }
 };
 
+export const checkIsJobLiked = (jobId: string): boolean => {
+  try {
+    const likedJobs: string[] = JSON.parse(
+      localStorage.getItem(keysLS.likedJobs) || '',
+    );
+    return likedJobs.includes(jobId);
+  } catch {
+    return false;
+  }
+};
+
 export const deleteUserDataFromLS = (): void => {
   localStorage.removeItem(keysLS.userData);
 };

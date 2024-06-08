@@ -1,11 +1,17 @@
-const Heart = (): JSX.Element => (
+import { FC } from 'react';
+
+type HeartProps = {
+  isFilled?: boolean;
+};
+
+const Heart: FC<HeartProps> = ({ isFilled = false }): JSX.Element => (
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="white"
-    className="size-7 hover:fill-white"
+    className={`size-7 ${isFilled ? 'fill-white' : 'hover:fill-white'}`}
   >
     <path
       strokeLinecap="round"
