@@ -1,13 +1,17 @@
 'use client';
 
 import { Formik, Form } from 'formik';
+import { useRouter } from 'next/navigation';
 import signupSchema from '@/utils/validation';
 import InputField from '@/components/form/inputField';
 import { UserData } from '@/types';
 
 const FormElem = (): JSX.Element => {
+  const router = useRouter();
+
   const handleSubmit = (userData: UserData): void => {
     localStorage.setItem('userData', JSON.stringify(userData));
+    router.push('/user-profile');
   };
 
   return (
