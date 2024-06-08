@@ -1,26 +1,45 @@
+'use client';
+
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useRouter } from 'next/navigation';
 
 const Header = (): JSX.Element => {
+  const pathname = usePathname();
+  const router = useRouter();
+  const userData = localStorage.getItem('userData');
+
+  const handleLogout = (): void => {
+    localStorage.removeItem('userData');
+    router.push('/');
+  };
+
   return (
     <header className="fixed inset-x-0 top-0 z-50 w-full h-14 text-xl backdrop-brightness-150 backdrop-blur-3xl">
       <nav className="flex place-content-between items-center w-10/12 m-auto h-full transition-all">
         <div className="flex items-center">
-          <Link href="/" className="hover:text-white mr-5 text-2xl">
+          <Link
+            href="/"
+            className={`hover:text-white mr-5 text-2xl ${pathname === '/' && 'underline underline-offset-4'}`}
+          >
             Main
           </Link>
-          <Link href="/jobs" className="hover:text-white">
+          <Link
+            href="/jobs"
+            className={`"hover:text-white" ${pathname === '/jobs' && 'underline underline-offset-4'}`}
+          >
             Jobs
           </Link>
         </div>
-        <div className="flex items-center">
-          <Link href="/saved" className="mr-5">
+        <div className="flex items-center gap-4">
+          <Link href="/saved">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               strokeWidth={1.5}
               stroke="white"
-              className="size-7 hover:fill-white"
+              className={`size-7 hover:fill-white" ${pathname === '/saved' && 'underline underline-offset-4'}`}
             >
               <path
                 strokeLinecap="round"
@@ -29,9 +48,13 @@ const Header = (): JSX.Element => {
               />
             </svg>
           </Link>
-          <Link href="/user-profile" className="hover:text-white">
-            Sign up
+          <Link
+            href={userData ? '/user-profile' : '/create-profile'}
+            className={`hover:text-white" ${pathname === '/user-profile' || (pathname === '/create-profile' && 'underline underline-offset-4')}`}
+          >
+            {userData ? 'Profile' : 'Sign up'}
           </Link>
+          {userData && <button onClick={handleLogout}>Log out</button>}
         </div>
       </nav>
     </header>
