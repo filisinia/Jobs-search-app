@@ -23,8 +23,9 @@ const JobsPage = (): JSX.Element => {
   return (
     <section>
       <Search onSearch={handleSearch} />
-      {loading && <Loader />}
-      {jobs.length !== 0 ? (
+      {loading ? (
+        <Loader />
+      ) : jobs.length !== 0 ? (
         <JobCards jobs={jobs} />
       ) : (
         <Message text="No jobs were found" />

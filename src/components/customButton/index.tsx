@@ -7,7 +7,7 @@ type CustomButtonProp = {
 
 const CustomButton: FC<CustomButtonProp> = ({ name, onClick }): JSX.Element => (
   <button
-    className="shadow bg-indigo-500/30 hover:bg-indigo-400/30 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
+    className="shadow max-w-max bg-indigo-500/30 hover:bg-indigo-400/30 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-6 rounded"
     onClick={onClick}
   >
     {name}
