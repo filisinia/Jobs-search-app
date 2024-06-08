@@ -17,7 +17,7 @@ export const fetchJobs = async (
 ): Promise<JobDetails[]> => {
   try {
     const response: JobDetailsResponse = (
-      await apiClient.get<JobDetailsResponse>('/search', {
+      await apiClient.get('/search', {
         params: {
           query: query || defaultSearchString,
           page: page,
@@ -25,6 +25,25 @@ export const fetchJobs = async (
       })
     ).data;
     return response.data;
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      throw new Error(error.message);
+    } else {
+      throw new Error('Error in fetching the jobs');
+    }
+  }
+};
+
+export const fetchJobById = async (jobId: string) => {
+  try {
+    const response: JobDetailsResponse = (
+      await apiClient.get('/job-details', {
+        params: {
+          job_id: jobId,
+        },
+      })
+    ).data;
+    return response.data[0];
   } catch (error) {
     if (axios.isAxiosError(error)) {
       throw new Error(error.message);

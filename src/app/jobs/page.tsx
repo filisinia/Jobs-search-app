@@ -4,7 +4,7 @@ import JobCards from '@/components/jobCards';
 import Loader from '@/components/loader';
 import Message from '@/components/message';
 import Search from '@/components/search';
-import { useJobs } from '@/hooks/jobs';
+import { useJobs } from '@/hooks/jobsByQuery';
 import { getUserDataFromLS } from '@/utils/localStorage';
 import { useState } from 'react';
 

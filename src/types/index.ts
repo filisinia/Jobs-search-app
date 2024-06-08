@@ -60,3 +60,8 @@ export type UserData = {
   desiredJobTitle: string;
   aboutMe: string;
 };
+
+export type useJobsResponse = {
+  jobs: JobDetails[] | [];
+  loading: boolean;
+};

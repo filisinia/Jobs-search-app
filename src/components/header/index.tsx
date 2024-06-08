@@ -38,6 +38,7 @@ const Header = (): JSX.Element => {
             <Heart />
           </Link>
           <Link
+            suppressHydrationWarning
             href={userData ? '/user-profile' : '/create-profile'}
             className={`hover:text-white ${(pathname === '/user-profile' || pathname === '/create-profile') && 'underline underline-offset-4'}`}
           >

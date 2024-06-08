@@ -24,7 +24,7 @@ export const getUserDataFromLS = (): UserData | null => {
   }
 };
 
-export const getLikedJobsFromLS = (): JobDetails[] | null => {
+export const getLikedJobsFromLS = (): string[] | null => {
   try {
     return JSON.parse(localStorage.getItem(keysLS.likedJobs) || '');
   } catch {
