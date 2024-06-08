@@ -12,7 +12,7 @@ const Header = (): JSX.Element => {
 
   const handleLogout = (): void => {
     localStorage.removeItem('userData');
-    router.replace('/');
+    pathname === '/' ? router.replace('/create-profile') : router.replace('/');
   };
 
   return (
