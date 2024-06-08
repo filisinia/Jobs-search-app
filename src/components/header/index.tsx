@@ -50,7 +50,7 @@ const Header = (): JSX.Element => {
           </Link>
           <Link
             href={userData ? '/user-profile' : '/create-profile'}
-            className={`hover:text-white" ${pathname === '/user-profile' || (pathname === '/create-profile' && 'underline underline-offset-4')}`}
+            className={`hover:text-white" ${(pathname === '/user-profile' || pathname === '/create-profile') && 'underline underline-offset-4'}`}
           >
             {userData ? 'Profile' : 'Sign up'}
           </Link>
