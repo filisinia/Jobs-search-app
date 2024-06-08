@@ -9,15 +9,17 @@ const apiClient = axios.create({
   },
 });
 
+const defaultSearchString = 'Front-end';
+
 export const fetchJobs = async (
-  query = 'Front-end',
-  page = 1,
+  query: string = defaultSearchString,
+  page: number = 1,
 ): Promise<JobDetails[]> => {
   try {
     const response: JobDetailsResponse = (
       await apiClient.get<JobDetailsResponse>('/search', {
         params: {
-          query: query,
+          query: query || defaultSearchString,
           page: page,
         },
       })

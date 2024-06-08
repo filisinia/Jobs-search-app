@@ -1,16 +1,30 @@
 'use client';
 
-import JobCard from '@/components/jobCard';
+import JobCards from '@/components/jobCards';
+import Loader from '@/components/loader';
+import Search from '@/components/search';
 import { useJobs } from '@/hooks/jobs';
+import { getUserDataFromLS } from '@/utils/userData';
+import { useState } from 'react';
 
 const JobsPage = (): JSX.Element => {
-  const { jobs } = useJobs();
+  const userData = getUserDataFromLS();
+  const [searchQuery, setSearchQuery] = useState(
+    userData ? userData.desiredJobTitle : '',
+  );
 
-  const jobCards = jobs?.map((job) => (
-    <JobCard key={job.job_id} jobDetails={job} />
-  ));
+  const { jobs, loading } = useJobs(searchQuery);
 
-  return <section>{jobCards}</section>;
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  return (
+    <section>
+      <Search onSearch={handleSearch} />
+      {loading ? <Loader /> : <JobCards jobs={jobs} />}
+    </section>
+  );
 };
 
 export default JobsPage;
