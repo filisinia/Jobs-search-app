@@ -53,5 +53,7 @@ export const deleteLikedJobFromLS = (jobId: string): void => {
     (likedJobId) => likedJobId !== jobId,
   );
 
-  if (updatedJobIds) addLikedJobIntoLS(updatedJobIds);
+  if (updatedJobIds) {
+    localStorage.setItem(keysLS.likedJobs, JSON.stringify(updatedJobIds));
+  }
 };

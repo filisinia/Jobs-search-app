@@ -1,5 +1,5 @@
 import { useInView } from 'react-intersection-observer';
-import Loader from '../loaderBasic';
+import Loader from '@/components/loaders/loaderBasic';
 import { FC, useEffect, useState } from 'react';
 
 type LoadMoreProps = {
