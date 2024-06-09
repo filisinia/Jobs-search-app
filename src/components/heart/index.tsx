@@ -11,7 +11,7 @@ const Heart: FC<HeartProps> = ({ isFilled = false }): JSX.Element => (
     viewBox="0 0 24 24"
     strokeWidth={1.5}
     stroke="white"
-    className={`size-7 ${isFilled ? 'fill-white' : 'hover:fill-white'}`}
+    className={`size-7 ${isFilled ? 'fill-white' : 'hover:fill-white hover:scale-110 transition-all'}`}
   >
     <path
       strokeLinecap="round"

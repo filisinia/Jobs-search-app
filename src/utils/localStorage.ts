@@ -26,13 +26,12 @@ export const getLikedJobsFromLS = (): string[] | null => {
 };
 
 export const addLikedJobIntoLS = (likedJobId: string | string[]): void => {
-  const likedJobs = getLikedJobsFromLS() || [];
+  let likedJobs = getLikedJobsFromLS() || [];
 
-  const updatedLikedJobs = [
-    ...likedJobs,
-    typeof likedJobId === 'string' ? likedJobId : { ...likedJobId },
-  ];
-  localStorage.setItem(keysLS.likedJobs, JSON.stringify(updatedLikedJobs));
+  if (!Array.isArray(likedJobId)) likedJobId = [likedJobId];
+  likedJobs = Array.from(new Set([...likedJobs, ...likedJobId]));
+
+  localStorage.setItem(keysLS.likedJobs, JSON.stringify(likedJobs));
 };
 
 export const checkIsJobLiked = (jobId: string): boolean => {
