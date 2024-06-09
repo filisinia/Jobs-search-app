@@ -17,12 +17,12 @@ const Header = (): JSX.Element => {
   };
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 w-full h-14 text-xl backdrop-brightness-150 backdrop-blur-3xl">
+    <header className="fixed inset-x-0 top-0 z-50 w-full h-14 text-md sm:text-xl backdrop-brightness-150 backdrop-blur-3xl">
       <nav className="flex place-content-between items-center w-10/12 m-auto h-full transition-all">
         <div className="flex items-center">
           <Link
             href="/"
-            className={`hover:text-white mr-5 text-2xl ${pathname === '/' && 'underline underline-offset-4'}`}
+            className={`hover:text-white mr-3 sm:mr-5 text-xl sm:text-2xl ${pathname === '/' && 'underline underline-offset-4'}`}
           >
             Main
           </Link>
@@ -33,7 +33,7 @@ const Header = (): JSX.Element => {
             Jobs
           </Link>
         </div>
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-2 sm:gap-4">
           <Link href="/liked">
             {pathname === '/liked' ? <Heart isFilled={true} /> : <Heart />}
           </Link>

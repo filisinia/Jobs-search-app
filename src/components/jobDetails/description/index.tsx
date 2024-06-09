@@ -13,7 +13,7 @@ const JobDescription: FC<JobDescriptionProps> = ({
   };
 
   return (
-    <section className="py-10">
+    <section>
       <h2 className="text-2xl font-bold mb-3">Job Description</h2>
       <div>{formatText(jobDetails.job_description)}</div>
     </section>
