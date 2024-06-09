@@ -27,11 +27,11 @@ export default function RootLayout({
       <body
         className={
           (inter.className,
-          'bg-gradient-to-tr from-[#2e020e] to-blue-950 min-h-svh text-lg text-slate-300 pt-14')
+          'bg-gradient-to-tr from-[#2e020e] to-blue-950 min-h-svh text-lg text-slate-300 pt-10')
         }
       >
         <Header />
-        <main className="w-10/12 mx-auto backdrop-opacity-50 mt-5">
+        <main className="w-10/12 mx-auto backdrop-opacity-50 py-10">
           {children}
         </main>
       </body>

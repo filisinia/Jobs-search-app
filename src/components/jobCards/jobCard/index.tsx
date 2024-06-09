@@ -1,8 +1,9 @@
-import { JobDetails } from '@/types';
 import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import CardHeader from '@/components/jobCards/jobCard/cardHeader';
-import CardDetails from '@/components/jobCards/jobCard/cardBody';
+import CardDetails from '@/components/jobCards/jobCard/cardDetails';
 import CustomButton from '@/components/customButton';
+import { JobDetails } from '@/types';
 
 type JobCardProps = {
   jobDetails: JobDetails;
@@ -10,25 +11,16 @@ type JobCardProps = {
 };
 
 const JobCard: FC<JobCardProps> = ({ jobDetails, onUnlike }): JSX.Element => {
-  const [imageError, setImageError] = useState(false);
-
-  const handleImageError = (): void => {
-    setImageError(true);
-  };
+  const router = useRouter();
 
   const handleClick = (): void => {
-    console.log('show details page');
+    router.push(`/job-details/${jobDetails.job_id}`);
   };
 
   return (
     <section className="flex flex-col gap-2 mb-10 p-5 rounded-lg bg-slate-50/5 shadow-lg shadow-indigo-300/10">
       <div className="min-w-0 flex-1 flex flex-col gap-2">
-        <CardHeader
-          jobDetails={jobDetails}
-          imageError={imageError}
-          onImageError={handleImageError}
-          onUnlike={onUnlike}
-        />
+        <CardHeader jobDetails={jobDetails} onUnlike={onUnlike} />
         <h2 className="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight text-slate-200">
           {jobDetails.job_title}
         </h2>

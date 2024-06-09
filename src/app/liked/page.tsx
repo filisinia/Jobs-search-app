@@ -5,23 +5,27 @@ import Loader from '@/components/loader';
 import Message from '@/components/message';
 import { useJobsId } from '@/hooks/jobsById';
 import { getLikedJobsFromLS } from '@/utils/localStorage';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const LikedPage = (): JSX.Element => {
-  const [likedJobs, setLikedJobs] = useState<string[]>(
+  const [likedJobsIDs, setLikedJobsIDs] = useState<string[]>(
     getLikedJobsFromLS() || [],
   );
 
-  const { jobs, loading } = useJobsId(likedJobs);
+  const { jobs, loading, trigger } = useJobsId(likedJobsIDs);
+
+  useEffect(() => {
+    trigger();
+  }, [trigger, likedJobsIDs]);
 
   const handleUnlike = (jobId: string): void => {
-    const updatedLikedJobs = likedJobs.filter((id) => id !== jobId);
-    setLikedJobs(updatedLikedJobs);
+    const updatedLikedJobs = likedJobsIDs.filter((id) => id !== jobId);
+    setLikedJobsIDs(updatedLikedJobs);
   };
 
   return (
     <section>
-      {loading && likedJobs.length !== 0 ? (
+      {loading && likedJobsIDs.length !== 0 ? (
         <Loader />
       ) : jobs.length !== 0 ? (
         <section>

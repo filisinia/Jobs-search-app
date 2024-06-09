@@ -1,4 +1,3 @@
-import useSWR from 'swr';
 import { fetchJobs } from '@/api';
 import { useJobsResponse } from '@/types';
 import useSWRMutation from 'swr/mutation';
