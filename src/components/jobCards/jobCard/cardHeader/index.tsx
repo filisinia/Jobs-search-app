@@ -12,19 +12,20 @@ import {
 
 type CardHeaderProps = {
   jobDetails: JobDetails;
-  imageError: boolean;
-  onImageError: () => void;
   onUnlike?: (jobId: string) => void;
 };
 
 const CardHeader: FC<CardHeaderProps> = ({
   jobDetails,
-  imageError,
-  onImageError,
   onUnlike,
 }): JSX.Element => {
+  const [imageError, setImageError] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const pathname = usePathname();
+
+  const handleImageError = (): void => {
+    setImageError(true);
+  };
 
   const handlerHeartBtn = (): void => {
     isLiked
@@ -50,7 +51,7 @@ const CardHeader: FC<CardHeaderProps> = ({
             alt="Company logo"
             width={25}
             height={25}
-            onError={onImageError}
+            onError={handleImageError}
           />
         ) : (
           <div className="w-9 h-9 bg-purple-900 rounded-full flex items-center justify-center">

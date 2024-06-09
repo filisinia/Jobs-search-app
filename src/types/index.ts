@@ -67,8 +67,3 @@ export type useJobsResponse = {
   trigger: () => void;
   isMutating: boolean;
 };
-
-export type useJobsIDResponse = {
-  jobs: JobDetails[] | [];
-  loading: boolean;
-};

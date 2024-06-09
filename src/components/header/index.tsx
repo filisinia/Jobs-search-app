@@ -44,7 +44,11 @@ const Header = (): JSX.Element => {
           >
             {userData ? 'Profile' : 'Sign up'}
           </Link>
-          {userData && <button onClick={handleLogout}>Log out</button>}
+          {userData && (
+            <button onClick={handleLogout} className="hover:text-white">
+              Log out
+            </button>
+          )}
         </div>
       </nav>
     </header>
