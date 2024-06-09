@@ -9,13 +9,6 @@ export const setUserDataIntoLS = (userData: UserData): void => {
   localStorage.setItem(keysLS.userData, JSON.stringify(userData));
 };
 
-export const addLikedJobIntoLS = (likedJobId: string): void => {
-  const likedJobs = JSON.parse(localStorage.getItem(keysLS.likedJobs) || '[]');
-
-  const updatedLikedJobs = [...likedJobs, likedJobId];
-  localStorage.setItem(keysLS.likedJobs, JSON.stringify(updatedLikedJobs));
-};
-
 export const getUserDataFromLS = (): UserData | null => {
   try {
     return JSON.parse(localStorage.getItem(keysLS.userData) || '');
@@ -32,12 +25,20 @@ export const getLikedJobsFromLS = (): string[] | null => {
   }
 };
 
+export const addLikedJobIntoLS = (likedJobId: string | string[]): void => {
+  const likedJobs = getLikedJobsFromLS() || [];
+
+  const updatedLikedJobs = [
+    ...likedJobs,
+    typeof likedJobId === 'string' ? likedJobId : { ...likedJobId },
+  ];
+  localStorage.setItem(keysLS.likedJobs, JSON.stringify(updatedLikedJobs));
+};
+
 export const checkIsJobLiked = (jobId: string): boolean => {
   try {
-    const likedJobs: string[] = JSON.parse(
-      localStorage.getItem(keysLS.likedJobs) || '',
-    );
-    return likedJobs.includes(jobId);
+    const likedJobs = getLikedJobsFromLS();
+    return likedJobs ? likedJobs.includes(jobId) : false;
   } catch {
     return false;
   }
@@ -45,4 +46,13 @@ export const checkIsJobLiked = (jobId: string): boolean => {
 
 export const deleteUserDataFromLS = (): void => {
   localStorage.removeItem(keysLS.userData);
+};
+
+export const deleteLikedJobFromLS = (jobId: string): void => {
+  const likedJobIds = getLikedJobsFromLS();
+  const updatedJobIds = likedJobIds?.filter(
+    (likedJobId) => likedJobId !== jobId,
+  );
+
+  if (updatedJobIds) addLikedJobIntoLS(updatedJobIds);
 };

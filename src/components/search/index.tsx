@@ -6,14 +6,21 @@ import CustomButton from '../customButton';
 
 type SearchProps = {
   onSearch: (query: string) => void;
+  trigger: () => void;
+  isMutating: boolean;
 };
 
-const Search: FC<SearchProps> = ({ onSearch }): JSX.Element => {
+const Search: FC<SearchProps> = ({
+  onSearch,
+  trigger,
+  isMutating,
+}): JSX.Element => {
   const userData = getUserDataFromLS();
   const [query, setQuery] = useState(userData ? userData.desiredJobTitle : '');
 
   const handleSearch = (): void => {
     onSearch(query);
+    trigger();
   };
 
   const handleKeyUp = (e: React.KeyboardEvent<HTMLInputElement>): void => {
@@ -41,7 +48,11 @@ const Search: FC<SearchProps> = ({ onSearch }): JSX.Element => {
         placeholder="Search job"
         className="w-full bg-slate-100/20 p-1 rounded-sm pl-10 text-white focus:outline-none shadow-lg focus:shadow-indigo-300/10"
       />
-      <CustomButton name="Search" onClick={handleSearch} />
+      <CustomButton
+        name="Search"
+        onClick={handleSearch}
+        isDisabled={isMutating}
+      />
     </div>
   );
 };

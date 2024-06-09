@@ -4,7 +4,7 @@ import { deleteUserDataFromLS, getUserDataFromLS } from '@/utils/localStorage';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import Heart from '../heart';
+import Heart from '@/components/heart';
 
 const Header = (): JSX.Element => {
   const pathname = usePathname();

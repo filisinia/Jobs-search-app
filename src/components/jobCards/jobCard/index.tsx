@@ -6,9 +6,10 @@ import CustomButton from '@/components/customButton';
 
 type JobCardProps = {
   jobDetails: JobDetails;
+  onUnlike?: (jobId: string) => void;
 };
 
-const JobCard: FC<JobCardProps> = ({ jobDetails }): JSX.Element => {
+const JobCard: FC<JobCardProps> = ({ jobDetails, onUnlike }): JSX.Element => {
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = (): void => {
@@ -25,7 +26,8 @@ const JobCard: FC<JobCardProps> = ({ jobDetails }): JSX.Element => {
         <CardHeader
           jobDetails={jobDetails}
           imageError={imageError}
-          handleImageError={handleImageError}
+          onImageError={handleImageError}
+          onUnlike={onUnlike}
         />
         <h2 className="text-2xl font-bold leading-7 sm:truncate sm:text-3xl sm:tracking-tight text-slate-200">
           {jobDetails.job_title}

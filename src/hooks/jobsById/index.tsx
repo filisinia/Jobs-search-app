@@ -1,10 +1,11 @@
 import useSWR from 'swr';
 import { fetchJobById } from '@/api';
-import { JobDetails, useJobsResponse } from '@/types';
+import { JobDetails, useJobsIDResponse } from '@/types';
 
-export const useJobsId = (jobIds: string[]): useJobsResponse => {
-  const { data, error } = useSWR<JobDetails[]>(jobIds, () =>
-    Promise.all(jobIds.map((id) => fetchJobById(id))),
+export const useJobsId = (jobIds: string[]): useJobsIDResponse => {
+  const { data, error } = useSWR<JobDetails[]>(
+    jobIds.length ? jobIds : null,
+    () => Promise.all(jobIds.map((id) => fetchJobById(id))),
   );
 
   return { jobs: data || [], loading: !error && !data };
