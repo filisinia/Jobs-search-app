@@ -1,8 +1,9 @@
-import { JobDetails } from '@/types';
 import { FC, useState } from 'react';
+import { useRouter } from 'next/navigation';
 import CardHeader from '@/components/jobCards/jobCard/cardHeader';
 import CardDetails from '@/components/jobCards/jobCard/cardBody';
 import CustomButton from '@/components/customButton';
+import { JobDetails } from '@/types';
 
 type JobCardProps = {
   jobDetails: JobDetails;
@@ -10,6 +11,7 @@ type JobCardProps = {
 };
 
 const JobCard: FC<JobCardProps> = ({ jobDetails, onUnlike }): JSX.Element => {
+  const router = useRouter();
   const [imageError, setImageError] = useState(false);
 
   const handleImageError = (): void => {
@@ -17,7 +19,7 @@ const JobCard: FC<JobCardProps> = ({ jobDetails, onUnlike }): JSX.Element => {
   };
 
   const handleClick = (): void => {
-    console.log('show details page');
+    router.push(`/job-details/${jobDetails.job_id}`);
   };
 
   return (
