@@ -1,7 +1,7 @@
 import { FC, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import CardHeader from '@/components/jobCards/jobCard/cardHeader';
-import CardDetails from '@/components/jobCards/jobCard/cardBody';
+import CardDetails from '@/components/jobCards/jobCard/cardDetails';
 import CustomButton from '@/components/customButton';
 import { JobDetails } from '@/types';
 

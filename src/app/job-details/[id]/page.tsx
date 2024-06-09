@@ -2,7 +2,6 @@
 
 import InfoBlock from '@/components/jobDetails/infoBlock';
 import Loader from '@/components/loader';
-import Message from '@/components/message';
 import { useJobsId } from '@/hooks/jobsById';
 import { FC, useEffect } from 'react';
 
@@ -13,27 +12,15 @@ type JobDetailsPageProps = {
 };
 
 const JobDetailsPage: FC<JobDetailsPageProps> = ({ params }): JSX.Element => {
-  const { jobs, loading, trigger } = useJobsId([params.id]);
+  const jobId = decodeURIComponent(params.id);
+  const { jobs, loading, trigger } = useJobsId([jobId]);
+  const jobDetails = jobs[0];
 
   useEffect(() => {
     trigger();
   }, [trigger]);
 
-  console.log(jobs);
-
-  return <span>ddd</span>;
-
-  // return (
-  //   <section>
-  //     {loading ? (
-  //       <Loader />
-  //     ) : jobs.length !== 0 ? (
-  //       <InfoBlock jobDetails={jobs[0]} />
-  //     ) : (
-  //       <Message text="You don't have any saved jobs" />
-  //     )}
-  //   </section>
-  // );
+  return <>{loading ? <Loader /> : <InfoBlock jobDetails={jobDetails} />}</>;
 };
 
 export default JobDetailsPage;

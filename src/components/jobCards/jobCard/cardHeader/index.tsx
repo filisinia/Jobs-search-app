@@ -1,7 +1,5 @@
 import { FC, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
-import Image from 'next/image';
-import Link from 'next/link';
 import Heart from '@/components/heart';
 import { JobDetails } from '@/types';
 import {
@@ -9,6 +7,8 @@ import {
   checkIsJobLiked,
   deleteLikedJobFromLS,
 } from '@/utils/localStorage';
+import EmployerLogo from '@/components/jobCards/jobCard/cardHeader/employerLogo';
+import EmployerWebsite from '@/components/jobCards/jobCard/cardHeader/employerWebsite';
 
 type CardHeaderProps = {
   jobDetails: JobDetails;
@@ -19,13 +19,8 @@ const CardHeader: FC<CardHeaderProps> = ({
   jobDetails,
   onUnlike,
 }): JSX.Element => {
-  const [imageError, setImageError] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
   const pathname = usePathname();
-
-  const handleImageError = (): void => {
-    setImageError(true);
-  };
 
   const handlerHeartBtn = (): void => {
     isLiked
@@ -45,30 +40,8 @@ const CardHeader: FC<CardHeaderProps> = ({
   return (
     <div className="flex justify-between">
       <div className="flex items-center gap-3">
-        {jobDetails.employer_logo && !imageError ? (
-          <Image
-            src={jobDetails.employer_logo}
-            alt="Company logo"
-            width={25}
-            height={25}
-            onError={handleImageError}
-          />
-        ) : (
-          <div className="w-9 h-9 bg-purple-900 rounded-full flex items-center justify-center">
-            {jobDetails.employer_name[0]}
-          </div>
-        )}
-        {jobDetails.employer_website ? (
-          <Link
-            href={jobDetails.employer_website}
-            target="_blank"
-            className="text-md"
-          >
-            {jobDetails.employer_name}
-          </Link>
-        ) : (
-          <span className="text-md">{jobDetails.employer_name}</span>
-        )}
+        <EmployerLogo jobDetails={jobDetails} />
+        <EmployerWebsite jobDetails={jobDetails} />
       </div>
       <button onClick={handlerHeartBtn}>
         {isLiked ? <Heart isFilled={true} /> : <Heart />}
