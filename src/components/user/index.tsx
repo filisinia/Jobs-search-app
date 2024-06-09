@@ -1,7 +1,7 @@
 'use client';
 
 import { useRouter } from 'next/navigation';
-import { getUserDataFromLS } from '@/utils/userData';
+import { getUserDataFromLS } from '@/utils/localStorage';
 
 const UserInfo = (): JSX.Element | null => {
   const router = useRouter();
