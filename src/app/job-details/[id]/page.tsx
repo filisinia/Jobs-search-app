@@ -2,7 +2,7 @@
 
 import JobDescription from '@/components/jobDetails/description';
 import InfoBlock from '@/components/jobDetails/infoBlock';
-import Loader from '@/components/loader';
+import Loader from '@/components/loaders/loaderBasic';
 import { useJobsId } from '@/hooks/jobsById';
 import { FC, useEffect } from 'react';
 

@@ -1,7 +1,7 @@
 'use client';
 
 import JobCards from '@/components/jobCards';
-import Loader from '@/components/loader';
+import Loader from '@/components/loaders/loaderBasic';
 import Message from '@/components/message';
 import { useJobsId } from '@/hooks/jobsById';
 import { getLikedJobsFromLS } from '@/utils/localStorage';

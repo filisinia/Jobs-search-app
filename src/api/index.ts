@@ -13,7 +13,7 @@ const defaultSearchString = 'Front-end';
 
 export const fetchJobs = async (
   query: string = defaultSearchString,
-  page: number = 1,
+  page: number,
 ): Promise<JobDetails[]> => {
   try {
     const response: JobDetailsResponse = (
