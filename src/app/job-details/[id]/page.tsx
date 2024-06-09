@@ -1,5 +1,6 @@
 'use client';
 
+import JobDescription from '@/components/jobDetails/description';
 import InfoBlock from '@/components/jobDetails/infoBlock';
 import Loader from '@/components/loader';
 import { useJobsId } from '@/hooks/jobsById';
@@ -20,7 +21,18 @@ const JobDetailsPage: FC<JobDetailsPageProps> = ({ params }): JSX.Element => {
     trigger();
   }, [trigger]);
 
-  return <>{loading ? <Loader /> : <InfoBlock jobDetails={jobDetails} />}</>;
+  return (
+    <>
+      {loading ? (
+        <Loader />
+      ) : (
+        <section className="flex flex-col gap-5 items-center">
+          <InfoBlock jobDetails={jobDetails} />
+          <JobDescription jobDetails={jobDetails} />
+        </section>
+      )}
+    </>
+  );
 };
 
 export default JobDetailsPage;
