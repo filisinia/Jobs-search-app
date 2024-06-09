@@ -3,7 +3,7 @@ import EmployerLogo from '@/components/jobCards/jobCard/cardHeader/employerLogo'
 import EmployerWebsite from '@/components/jobCards/jobCard/cardHeader/employerWebsite';
 import { JobDetails } from '@/types';
 import { FC, useState } from 'react';
-import ApplyLink from './applyLink';
+import ApplyLink from '@/components/jobDetails/infoBlock/applyLink';
 import Heart from '@/components/heart';
 import {
   deleteLikedJobFromLS,
